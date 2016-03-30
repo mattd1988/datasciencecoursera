@@ -1,28 +1,18 @@
-#Preliminaries
-
-#Load packages.
-
 packages <- c("data.table", "reshape2")
 sapply(packages, require, character.only=TRUE, quietly=TRUE)
-#Set path.
 
 path <- getwd()
 path
-#Get the data
-
-#Download the file. Put it in the Data folder. This was already done on 2014-04-11; save time and don't evaluate again.
 
 url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 f <- "Dataset.zip"
 if (!file.exists(path)) {dir.create(path)}
 download.file(url, file.path(path, f))
-#Unzip the file. This was already done on 2014-04-11; save time and don't evaluate again.
 
 executable <- file.path("C:", "Program Files (x86)", "7-Zip", "7z.exe")
 parameters <- "x"
 cmd <- paste(paste0("\"", executable, "\""), parameters, paste0("\"", file.path(path, f), "\""))
 system(cmd)
-#The archive put the files in a folder named UCI HAR Dataset. Set this folder as the input path. List the files here.
 
 pathIn <- file.path(path, "UCI HAR Dataset")
 list.files(pathIn, recursive=TRUE)
